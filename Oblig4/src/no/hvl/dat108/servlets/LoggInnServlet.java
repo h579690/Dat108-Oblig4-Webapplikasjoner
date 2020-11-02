@@ -7,29 +7,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class LoggInnServlet
- */
-@WebServlet("/LoggInnServlet")
+
+@WebServlet(name = "LogginnServlet", urlPatterns = { "/logginn" })
 public class LoggInnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-  
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
+ 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("logginn.html").forward(request, response);
+		
+		
+		String melding = (String) request.getSession().getAttribute("melding");
+			
+		request.getRequestDispatcher("WEB-INF/jsp/logginn.jsp").forward(request, response);
+		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		
-		doGet(request, response);
+		
+		/*
+		String melding = "Ugyldig brukernavn eller passord";
+		request.getSession().setAttribute("melding", melding);
+		response.sendRedirect("logginn.html");
+		*/
+		response.sendRedirect("deltagerliste");
+		
+
 	}
 
 }
