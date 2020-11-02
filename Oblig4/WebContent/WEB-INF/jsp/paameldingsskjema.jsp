@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="js/Validation.js" defer></script>
 <meta charset="ISO-8859-1">
 <!-- Fra https://purecss.io/ -->
 <link rel="stylesheet"
