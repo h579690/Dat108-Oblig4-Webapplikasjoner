@@ -3,8 +3,8 @@
 <html lang="no">
   <head>
     <link rel="shortcut icon" href="#">
-    <link href="main.css" rel="stylesheet" type="text/css" />
-    <link href="formcontroller.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <link href="css/formcontroller.css" rel="stylesheet" type="text/css" />
     <script src="js/validator.js" defer></script>
     <script src="js/formcontroller.js" defer></script>
 
