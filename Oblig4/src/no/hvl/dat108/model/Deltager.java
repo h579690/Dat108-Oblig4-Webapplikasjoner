@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema ="DAT108-Oblig4", name="deltager")
+@Table(schema ="DAT108_Oblig4", name="deltager")
 public class Deltager {
 
 	@Id
