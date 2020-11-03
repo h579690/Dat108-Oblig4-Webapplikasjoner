@@ -82,12 +82,12 @@ function validerPass(){
 
 function validerPassRep(){
 	let pass = iPass.value;
-	let passRep = iPrep.value;
+	let passRep = iPRep.value;
 	
 	if (passRep=== pass) {
     	iPRep.style.borderColor=("green");
     } else {
-    	iPrep.style.bordColor("red");
+    	iPRep.style.bordColor("red");
     }
 	
 }
