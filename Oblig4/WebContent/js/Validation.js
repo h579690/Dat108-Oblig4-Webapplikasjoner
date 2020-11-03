@@ -87,7 +87,7 @@ function validerPassRep(){
 	if (passRep=== pass) {
     	iPRep.style.borderColor=("green");
     } else {
-    	iPRep.style.bordColor("red");
+    	iPRep.style.borderColor("red");
     }
 	
 }
