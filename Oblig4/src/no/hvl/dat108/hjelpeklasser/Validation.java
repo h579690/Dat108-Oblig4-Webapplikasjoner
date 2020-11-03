@@ -23,7 +23,7 @@ public class Validation {
 		return false;
 	}
 
-	public static boolean erGyldigPassord(String passord) {
+	public boolean erGyldigPassord(String passord) {
 		if(passord.length() > 3 
 				&& !passord.isBlank()) {
 			return true;
@@ -31,7 +31,7 @@ public class Validation {
 		
 		return false;
 	}
-	public static boolean erGyldigPassordRepetert(String passord, String passordRepetert) {
+	public boolean erGyldigPassordRepetert(String passord, String passordRepetert) {
 		if(passord.contentEquals(passordRepetert)) {
 			return true;
 		}
@@ -39,4 +39,7 @@ public class Validation {
 		return false;
 	}
 	
+	public boolean erGyldigKjonn(String kjonn) {
+		return kjonn != null;
+	}
 }
