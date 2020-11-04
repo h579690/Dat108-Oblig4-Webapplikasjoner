@@ -14,12 +14,7 @@ public class DeltagerForm {
 	private String kjonnMelding;
 	
 	public DeltagerForm() {
-		fornavnMelding = "";
-		etternavnMelding = "";
-		mobilMelding ="";
-		passordMelding = "";
-		passordRepetertMelding  = "";
-		kjonnMelding = "";
+		
 		
 	}
 	
@@ -28,6 +23,13 @@ public class DeltagerForm {
 		this.etternavn = etternavn;
 		this.mobil = mobil;
 		this.kjonn = kjonn;
+		
+		fornavnMelding = "";
+		etternavnMelding = "";
+		mobilMelding ="";
+		passordMelding = "";
+		passordRepetertMelding  = "";
+		kjonnMelding = "";
 	}
 	
 	
