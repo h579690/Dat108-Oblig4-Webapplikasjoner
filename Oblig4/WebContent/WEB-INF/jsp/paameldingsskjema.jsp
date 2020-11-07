@@ -6,7 +6,7 @@
     <link href="css/main.css" rel="stylesheet" type="text/css" />
     <link href="css/formcontroller.css" rel="stylesheet" type="text/css" />
     <script src="js/validator.js" defer></script>
-    <script src="js/formcontroller.js" defer></script>
+<!--     <script src="js/formcontroller.js" defer></script> -->
 
     <title>Påmelding</title>
   </head>
