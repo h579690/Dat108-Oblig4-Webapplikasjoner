@@ -42,4 +42,12 @@ public class Validation {
 	public boolean erGyldigKjonn(String kjonn) {
 		return kjonn != null;
 	}
+	
+	public String escapeHtml(String s) {
+		String resultat = s;
+		resultat = resultat.replaceAll("<", "&lt;");
+		resultat = resultat.replaceAll(">", "&gt;");
+		resultat = resultat.replaceAll("\"", "&quot;");
+		return resultat;
+	}
 }
