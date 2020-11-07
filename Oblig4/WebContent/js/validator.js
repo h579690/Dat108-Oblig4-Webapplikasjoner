@@ -20,7 +20,8 @@ class Validator{
 	}
 	
 	run(){
-		
+		  
+
 		
 		const inputRef = document.getElementById(this.root).getElementsByTagName("input");
 	
