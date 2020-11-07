@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import no.hvl.dat108.hjelpeklasser.InnloggingUtil;
 import no.hvl.dat108.hjelpeklasser.Validation;
 
 
@@ -15,37 +16,32 @@ public class LoggInnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private Validation val = new Validation();
-	
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		String melding = (String) request.getSession().getAttribute("melding");
-			
+		//String melding = (String) request.getSession().getAttribute("melding");	
 		request.getRequestDispatcher("WEB-INF/jsp/logginn.jsp").forward(request, response);
-		
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		
-		
 		String mobil = request.getParameter("mobil");
-		String password = request.getParameter("password");
+		String passord = request.getParameter("passord");
+		mobil = val.escapeHtml(mobil);
+		passord = val.escapeHtml(passord);
 		
-		
-		/*
-		String melding = "Ugyldig brukernavn og/eller passord";
-		request.getSession().setAttribute("melding", melding);
-		response.sendRedirect("/logginn");
-		*/
-
-		response.sendRedirect("deltagerliste");
-	
-		
-		
-		
-
+		if(val.erGyldigMobil(mobil)) {
+			//Sjekker om mobil finnes i database og krypterer passord dersom ja
+		}
+		//TODO hente kryptert passord fra database
+		if(InnloggingUtil.isGyldigPassord(passord, "pass")) {
+			InnloggingUtil.loggInnMedTimeout(request, 120);
+			response.sendRedirect("deltagerliste");
+		} else {
+			String feilmelding = "Ugyldig brukernavn og/eller passord";
+			request.getSession().setAttribute("melding", feilmelding);
+			response.sendRedirect("logginn");
+		}
 	}
-
 }
