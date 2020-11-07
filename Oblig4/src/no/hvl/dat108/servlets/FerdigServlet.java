@@ -13,10 +13,10 @@ import no.hvl.dat108.hjelpeklasser.InnloggingUtil;
 @WebServlet(name = "FerdigServlet", urlPatterns = { "/loggut" })
 public class FerdigServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(InnloggingUtil.isInnlogget(request)) {
+			InnloggingUtil.loggUt(request);
 			request.getRequestDispatcher("WEB-INF/jsp/ferdig.jsp").forward(request,response);
 		} else {
 			String feilmelding = "Det er kun registrerte deltagere som får se utlogginssiden. "
@@ -25,7 +25,4 @@ public class FerdigServlet extends HttpServlet {
 			request.getRequestDispatcher("logginn").forward(request, response);
 		}
 	}
-
-
-
 }
