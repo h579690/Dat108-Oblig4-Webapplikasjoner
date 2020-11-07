@@ -21,8 +21,20 @@ public class PaameldingsServlet extends HttpServlet {
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	   
-		request.getRequestDispatcher("WEB-INF/jsp/paameldingsskjema.jsp").forward(request,response);
+	   deltagerForm.getFornavn();
+	   deltagerForm.getEtternavn();
+	   deltagerForm.getMobil();
+	   deltagerForm.getKjonn();
+	   deltagerForm.getFornavnMelding();
+	   deltagerForm.getEtternavnMelding();
+	   deltagerForm.getMobilMelding();
+	   deltagerForm.getPassordMelding();
+	   deltagerForm.getPassordRepetertMelding();
+	   deltagerForm.getKjonnMelding();
+		
+		System.out.println(deltagerForm.getFornavn());
+		
+	   request.getRequestDispatcher("WEB-INF/jsp/paameldingsskjema.jsp").forward(request,response);
 	}
 
 
@@ -94,7 +106,7 @@ public class PaameldingsServlet extends HttpServlet {
 		//legge deltager inn i databasen
 		//Set Session-greier for deltageren
 	    		
-	    		request.getSession().setAttribute("input", deltagerForm);
+	    		request.getSession(false).setAttribute("input", deltagerForm);
 	
 	    		response.sendRedirect("paamelding");
 		
