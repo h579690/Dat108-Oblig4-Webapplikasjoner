@@ -40,7 +40,10 @@ public class Validation {
 	}
 	
 	public boolean erGyldigKjonn(String kjonn) {
-		return kjonn != null;
+		if(!kjonn.equals("mann") && !kjonn.equals("kvinne")) {
+			return false;
+		}
+		return true;
 	}
 	
 	public String escapeHtml(String s) {
