@@ -21,7 +21,7 @@
 		</tr>
 		 <c:forEach items="${deltagerliste}" var="d">
 			<c:choose>
-				<c:when test="${d.mobil eq innlogger.mobil}">
+				<c:when test="${d.mobil eq innlogget.mobil}">
 					<tr bgcolor="#aaffaa">
 						<td align="center">${d.tegn}</td>
 						<td>${d.fornavn} ${d.etternavn}</td>
