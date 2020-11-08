@@ -22,7 +22,7 @@ public class Validation {
 		
 		return false;
 	}
-
+ 
 	public boolean erGyldigPassord(String passord) {
 		if(passord.length() > 3 
 				&& !passord.isBlank()) {
