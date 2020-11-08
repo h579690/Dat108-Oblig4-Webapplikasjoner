@@ -13,8 +13,8 @@ public class DeltagerEAO {
 	@PersistenceContext(name = "deltagerPU")
     private EntityManager em;
 	
-	public synchronized void leggTilDeltager(String mobil, String fornavn, String etternavn, String passordSalt, String passordHash, char kjonn) {
-		Deltager deltager = new Deltager(mobil, fornavn, etternavn, passordSalt, passordHash, kjonn);
+	public synchronized void leggTilDeltager(String mobil, String fornavn, String etternavn, String passordHash, char kjonn) {
+		Deltager deltager = new Deltager(mobil, fornavn, etternavn, passordHash, kjonn);
 		em.persist(deltager);
 	}
 	

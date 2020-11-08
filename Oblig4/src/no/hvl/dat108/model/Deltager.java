@@ -18,12 +18,11 @@ public class Deltager {
 	private char kjonn;
 	
 	
-	public Deltager(String mobil, String fornavn, String etternavn, String passordhash, String passordsalt, char kjonn) {
+	public Deltager(String mobil, String fornavn, String etternavn, String passordhash, char kjonn) {
 		this.mobil = mobil;
 		this.fornavn = fornavn;
 		this.etternavn = etternavn;
 		this.passordhash = passordhash;
-		this.passordsalt = passordsalt;
 		this.kjonn = kjonn;
 	}
 	
@@ -43,10 +42,6 @@ public class Deltager {
 
 	public String getPassordhash() {
 		return passordhash;
-	}
-
-	public String getPassordsalt() {
-		return passordsalt;
 	}
 	
 	public char getKjonn() {

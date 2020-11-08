@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import no.hvl.dat108.hjelpeklasser.*;
+import no.hvl.dat108.model.Deltager;
 import no.hvl.dat108.model.DeltagerEAO;
 
 @WebServlet(name = "PaameldingsServlet", urlPatterns = { "/paamelding" })
@@ -22,6 +23,8 @@ public class PaameldingsServlet extends HttpServlet {
 	
 	@EJB
 	private DeltagerEAO deltagerEAO = new DeltagerEAO();
+	
+	private CharForKjonn charForKjonn = new CharForKjonn();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -31,11 +34,11 @@ public class PaameldingsServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String fnavn = val.escapeHtml(request.getParameter("fornavn"));
-		String enavn = val.escapeHtml(request.getParameter("etternavn"));
+		String fornavn = val.escapeHtml(request.getParameter("fornavn"));
+		String etternavn = val.escapeHtml(request.getParameter("etternavn"));
 		String mobil = val.escapeHtml(request.getParameter("mobil"));
-		String pass = val.escapeHtml(request.getParameter("passord"));
-		String passRep = val.escapeHtml(request.getParameter("passordRepetert"));
+		String passord = val.escapeHtml(request.getParameter("passord"));
+		String passordRepetert = val.escapeHtml(request.getParameter("passordRepetert"));
 		String kjonn = val.escapeHtml(request.getParameter("kjonn"));
 
 		boolean paameldt = deltagerEAO.finnEnDeltager(mobil) == null;
@@ -43,22 +46,21 @@ public class PaameldingsServlet extends HttpServlet {
 		boolean gFnavn = false; 
 		boolean	gEnavn = false;
 		boolean gMobil = false;
-		boolean gPass = false; 
-		boolean gPassRep = false; 
+		boolean gPass = true; 
+		boolean gPassRep = true; 
 		boolean gKjonn = false;
 
-		if (!val.erGyldigNavn(fnavn)) {
+		if (!val.erGyldigNavn(fornavn)) {
 			deltagerForm.setFornavnMelding("Ugyldig fornavn");
 		} else {
-			
-			deltagerForm.setFornavn(fnavn);
+			deltagerForm.setFornavn(fornavn);
 			gFnavn = true;
 		}
 
-		if (!val.erGyldigNavn(enavn)) {
+		if (!val.erGyldigNavn(etternavn)) {
 			deltagerForm.setEtternavnMelding("Ugyldig etternavn");
 		} else {
-			deltagerForm.setEtternavn(enavn);
+			deltagerForm.setEtternavn(etternavn);
 			gEnavn = true;
 		}
 
@@ -69,17 +71,17 @@ public class PaameldingsServlet extends HttpServlet {
 			gMobil = true;
 		}
 
-		if (!val.erGyldigPassord(pass)) {
-			deltagerForm.setPassordMelding("Ugyldig Passord");
-		} else {
-			gPass = true;
-		}
-
-		if (!val.erGyldigPassordRepetert(pass, passRep)) {
-			deltagerForm.setPassordRepetertMelding("Ikke likt passord");
-		} else {
-			gPassRep = true;
-		}
+//		if (!val.erGyldigPassord(passord)) {
+//			deltagerForm.setPassordMelding("Ugyldig Passord");
+//		} else {
+//			gPass = true;
+//		}
+//
+//		if (!val.erGyldigPassordRepetert(passord, passordRepetert)) {
+//			deltagerForm.setPassordRepetertMelding("Ikke likt passord");
+//		} else {
+//			gPassRep = true;
+//		}
 
 		if (!val.erGyldigKjonn(kjonn)) {
 			deltagerForm.setKjonnMelding("Ugyldig kjonn");
@@ -89,27 +91,28 @@ public class PaameldingsServlet extends HttpServlet {
 		}
 
 		if ((gFnavn && gEnavn && gMobil && gPass && gPassRep && gKjonn && !paameldt)) {
-			response.sendRedirect("bekreftelse");
+			
 
 			// bruke passordhash greiene
 //			String hashetPassord = passordUtil.kryptertPassord(passord);
 			// opprette Deltager element
-//			Deltager deltager = new Deltager(mobil, fornavn, etternavn, hashetPassord, charForKjonn.kjonn(kjonn));
+			
+			Deltager deltager = new Deltager(mobil, fornavn, etternavn, passord, charForKjonn.kjonn(kjonn));
 			
 			// legge deltager inn i databasen
-//			deltagerEAO.leggTilDeltager2(deltager);
+			deltagerEAO.leggTilDeltager2(deltager);
 			
 
 			// Set Session-greier for deltageren
 //			request.getSession().setAttribute("deltager", deltager)
 			
-			//Redirect til /bekreftelse
-//			request.getSession().setAttribute("fornavn", fnavn);
-//			request.getSession().setAttribute("etternavn", enavn);
-//			request.getSession().setAttribute("mobil", mobil);
-//			request.getSession().setAttribute("kjonn", kjonn);
+			request.getSession().setAttribute("fornavn", fornavn);
+			request.getSession().setAttribute("etternavn", etternavn);
+			request.getSession().setAttribute("mobil", mobil);
+			request.getSession().setAttribute("kjonn", kjonn);
 
-		
+			//Redirect til /bekreftelse
+			request.getRequestDispatcher("WEB-INF/jsp/paameldingsbekreftelse.jsp").forward(request, response);
 		
 		} else {
 

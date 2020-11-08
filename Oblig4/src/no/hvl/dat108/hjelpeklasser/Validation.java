@@ -35,15 +35,17 @@ public class Validation {
 		if(passord.contentEquals(passordRepetert)) {
 			return true;
 		}
-		
 		return false;
 	}
 	
 	public boolean erGyldigKjonn(String kjonn) {
-		if(!kjonn.equals("mann") && !kjonn.equals("kvinne")) {
-			return false;
+		if(kjonn.equals("mann")) {
+			return true ;
+		} 
+		if(kjonn.equals("kvinne")) {
+			return true;
 		}
-		return true;
+		return false;
 	}
 	
 	public String escapeHtml(String s) {
