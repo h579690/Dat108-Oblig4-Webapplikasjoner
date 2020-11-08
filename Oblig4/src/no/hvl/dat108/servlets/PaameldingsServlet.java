@@ -19,19 +19,19 @@ public class PaameldingsServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+//
+//		deltagerForm.getFornavn();
+//		deltagerForm.getEtternavn();
+//		deltagerForm.getMobil();
+//		deltagerForm.getKjonn();
+//		deltagerForm.getFornavnMelding();
+//		deltagerForm.getEtternavnMelding();
+//		deltagerForm.getMobilMelding();
+//		deltagerForm.getPassordMelding();
+//		deltagerForm.getPassordRepetertMelding();
+//		deltagerForm.getKjonnMelding();
 
-		deltagerForm.getFornavn();
-		deltagerForm.getEtternavn();
-		deltagerForm.getMobil();
-		deltagerForm.getKjonn();
-		deltagerForm.getFornavnMelding();
-		deltagerForm.getEtternavnMelding();
-		deltagerForm.getMobilMelding();
-		deltagerForm.getPassordMelding();
-		deltagerForm.getPassordRepetertMelding();
-		deltagerForm.getKjonnMelding();
-
-		System.out.println(deltagerForm.getFornavn());
+//		request.getSession().getAttribute("deltagerForm");
 
 		request.getRequestDispatcher("WEB-INF/jsp/paameldingsskjema.jsp").forward(request, response);
 	}
@@ -42,14 +42,21 @@ public class PaameldingsServlet extends HttpServlet {
 		String enavn = request.getParameter("etternavn");
 		String mobil = request.getParameter("mobil");
 		String pass = request.getParameter("passord");
+		System.out.println(pass);
 		String passRep = request.getParameter("passordRepetert");
 		String kjonn = request.getParameter("kjonn");
 
 		boolean paameldt = false; // Skal komme databasekode her
-		boolean gFnavn = false, gEnavn = false, gMobil = false, gPass = false, gPassRep = false, gKjonn = false;
+		boolean gFnavn = false; 
+		boolean	gEnavn = false;
+		boolean gMobil = false;
+		boolean gPass = false; 
+		boolean gPassRep = false; 
+		boolean gKjonn = false;
 
 		if (!val.erGyldigNavn(fnavn)) {
 			deltagerForm.setFornavnMelding("Ugyldig fornavn");
+//			System.out.println("ugyldig fornavn");
 		} else {
 			deltagerForm.setFornavn(fnavn);
 			gFnavn = true;
@@ -71,8 +78,10 @@ public class PaameldingsServlet extends HttpServlet {
 
 		if (!val.erGyldigPassord(pass)) {
 			deltagerForm.setPassordMelding("Ugyldig Passord");
+			System.out.println("validering" + pass);
 		} else {
 			gPass = true;
+			System.out.println("passord godkjent");
 		}
 
 		if (!val.erGyldigPassordRepetert(pass, passRep)) {
@@ -97,9 +106,9 @@ public class PaameldingsServlet extends HttpServlet {
 			// legge deltager inn i databasen
 			// Set Session-greier for deltageren
 
-			request.getSession(false).setAttribute("input", deltagerForm);
+			request.getSession().setAttribute("deltagerForm", deltagerForm);
 
-			response.sendRedirect("bekreftelse");
+			response.sendRedirect("paamelding");
 		}
 	}
 }

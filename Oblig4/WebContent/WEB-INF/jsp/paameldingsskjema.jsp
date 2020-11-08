@@ -25,10 +25,10 @@
           <label for="mobil">Mobil (8 siffer):</label> <input type="text" name="mobil" id="mobil" value="${deltagerForm.mobil}" />
           <span class="melding">${deltagerForm.mobilMelding}</span>
 
-          <label for="passord">Passord:</label> <input type="password" name="passord" id="passord" value="${deltagerForm.passord}" />
+          <label for="passord">Passord:</label> <input type="password" name="passord" id="passord" />
           <span class="melding">${deltagerForm.passordMelding}</span>
 
-          <label for="passordRepetert">Passord repetert:</label> <input type="password" name="passordRepetert" id="passordRepetert" value="${deltagerForm.passordRepetert}" />
+          <label for="passordRepetert">Passord repetert:</label> <input type="password" name="passordRepetert" id="passordRepetert" />
           <span class="melding">${deltagerForm.passordRepetertMelding}</span>
 
           <span class="columnfirst">Kjønn:</span>
