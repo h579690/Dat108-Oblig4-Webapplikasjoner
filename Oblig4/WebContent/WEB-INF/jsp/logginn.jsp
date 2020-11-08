@@ -13,7 +13,7 @@
 	<h2>Logg inn</h2>
 	<p>Det er kun registrerte deltagere som får se deltagerlisten.</p>
 	<p>
-		${melding}
+		<font color="red">${melding}</font>
 	</p>
 	<form method="post" action="logginn" class="pure-form pure-form-aligned">
 		<fieldset>
