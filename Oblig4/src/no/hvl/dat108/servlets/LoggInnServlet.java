@@ -50,8 +50,9 @@ public class LoggInnServlet extends HttpServlet {
 			if (deltager == null) {
 				testMobil = false;
 			} else {
+				
 				kryptertLagretPassord = deltager.getPassordhash();
-				// testPassord = passordUtil.sjekkPassord(passord, kryptertLagretPassord);
+				testPassord = passordUtil.sjekkPassord(passord, kryptertLagretPassord);
 				// InnloggingUtil.isGyldigPassord(passord, kryptertLagretPassord) ALTERNATIV
 			}
 		}

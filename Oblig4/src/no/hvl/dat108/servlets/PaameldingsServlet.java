@@ -19,7 +19,7 @@ public class PaameldingsServlet extends HttpServlet {
 
 	private Validation val = new Validation();
 	private DeltagerForm deltagerForm = new DeltagerForm();
-//	private PassordUtil passordUtil = new PassordUtil();
+	private PassordUtil passordUtil = new PassordUtil();
 	
 	@EJB
 	private DeltagerEAO deltagerEAO = new DeltagerEAO();
@@ -94,17 +94,13 @@ public class PaameldingsServlet extends HttpServlet {
 			
 
 			// bruke passordhash greiene
-//			String hashetPassord = passordUtil.kryptertPassord(passord);
+			String hashetPassord = passordUtil.krypterPassord(passord);
 			// opprette Deltager element
 			
-			Deltager deltager = new Deltager(mobil, fornavn, etternavn, passord, charForKjonn.kjonn(kjonn));
+			Deltager deltager = new Deltager(mobil, fornavn, etternavn, hashetPassord, charForKjonn.kjonn(kjonn));
 			
 			// legge deltager inn i databasen
 			deltagerEAO.leggTilDeltager2(deltager);
-			
-
-			// Set Session-greier for deltageren
-//			request.getSession().setAttribute("deltager", deltager)
 			
 			request.getSession().setAttribute("fornavn", fornavn);
 			request.getSession().setAttribute("etternavn", etternavn);
@@ -114,7 +110,7 @@ public class PaameldingsServlet extends HttpServlet {
 			request.getSession().setAttribute("innlogget", deltager);
 
 			//Redirect til /bekreftelse
-			request.getRequestDispatcher("WEB-INF/jsp/paameldingsbekreftelse.jsp").forward(request, response);
+			response.sendRedirect("bekreftelse");
 		
 		} else {
 
