@@ -1,99 +1,100 @@
 
 "use strict";
 
-class Validator{
+//class Validator{
 	
 	
-	constructor (root = null){
-		this.root = root;
-		this.run = this.run.bind(this);
-		this.color;
-		this.iFornavn;
-		this.iEtternavn;
-		this.iMobil;
-		this.iPassord;
-		this.iPassordRepetert;
+//	constructor (root = null){
+//		this.root = root;
+//		this.run = this.run.bind(this);
+//		this.color;
+//		this.iFornavn;
+//		this.iEtternavn;
+//		this.iMobil;
+//		this.iPassord;
+//		this.iPassordRepetert;
+//	
+//	}
 	
-	}
-	
-	run(){
+//	run(){
 		  
    	console.log("Her")
 		
-		const inputRef = document.getElementById(this.root).getElementsByTagName("input");
+		let inputRef = document.getElementById("root").getElementsByTagName("input");
+		console.log(inputRef);
 	
-		this.iFornavn = inputRef[0];
+		let iFornavn = inputRef[0];
 		console.log(this.iFornavn);
-		this.iFornavn.addEventListener("change", this.validerFornavn);
+		iFornavn.addEventListener("input", validerFornavn);
 		
-		this.iEtternavn = inputRef[1];
-		this.iEtternavn.addEventListener("change", this.validerEtternavn);
+		let iEtternavn = inputRef[1];
+		iEtternavn.addEventListener("input", validerEtternavn);
 		
-		this.iMobil = inputRef[2];
-		this.iMobil.addEventListener("change", this.validerMobil);
+		let iMobil = inputRef[2];
+		iMobil.addEventListener("input", validerMobil);
 		
-		this.iPassord = inputRef[3];
-		this.iPassord.addEventListener("change", this.validerPassord);
+		let iPassord = inputRef[3];
+		iPassord.addEventListener("input", validerPassord);
 		
-		this.iPassordRepetert = inputRef[4];
-		this.iPassordRepetert.addEventListener("change", this.validerPassorRepetert);
+		let iPassordRepetert = inputRef[4];
+		iPassordRepetert.addEventListener("input", validerPassordRepetert);
 			
-		}
+		
 
 		
-	validerFornavn(){
-		let fornavn = this.iFornavn.value;
+	function validerFornavn(){
+		let fornavn = iFornavn.value;
 		if(fornavn.length < 2 || fornavn.length > 20){
-			this.iFornavn.style.borderColor=("red");
+			iFornavn.style.borderColor=("red");
 		} else{
-			this.iFornavn.style.borderColor=("green");
+			iFornavn.style.borderColor=("green");
 		}
 	}
 	
-	validerEtternavn(){
-			let etternavn = this.iEtternavn.value;
+	function validerEtternavn(){
+		let etternavn = iEtternavn.value;
 		if(etternavn.length < 2 || etternavn.length > 20){
-			this.iEnavn.style.borderColor=("red");
+			iEtternavn.style.borderColor=("red");
 		} else{
-			this.iEttenavn.style.borderColor=("green");
+			iEtternavn.style.borderColor=("green");
 		}
 		
 	}
 	
-	validerMobil(){
-		let mobil = this.iMob.value;
+	function validerMobil(){
+		let mobil = iMobil.value;
 		if(mobil.length === 8 && !isNaN(mobil)){
-			this.iMob.style.borderColor=("green");
+			iMobil.style.borderColor=("green");
 		}else{
-			this.iMob.style.borderColor=("red");
+			iMobil.style.borderColor=("red");
 		}
 	}
 	
 	
-	validerPassord(){
-		let pass = this.Pass.value;
+	function validerPassord(){
+		let pass = iPassord.value;
 		if(pass.length < 4){
-			this.iPass.style.borderColor=("red");
+			iPassord.style.borderColor=("red");
 		}else if(pass.length > 3 && pass.length < 8) {
-			this.iPass.style.borderColor=("orange");
+			iPassord.style.borderColor=("orange");
 		}
 		else{
-			this.iPass.style.borderColor=("green");
+			iPassord.style.borderColor=("green");
 		}
 	}
 	
 	
-	validerPassordRepetert(){
-		let pass = this.iPass.value;
-		let passRep = this.iPRep.value;
+	function validerPassordRepetert(){
+		let pass = iPassord.value;
+		let passRep = iPassordRepetert.value;
 	
 		if (passRep=== pass) {
-    		this.iPRep.style.borderColor=("green");
+    		iPassordRepetert.style.borderColor=("green");
    		 } else {
-    		this.iPRep.style.borderColor("red");
+    		iPassordRepetert.style.borderColor=("red");
    		 }
 	
-	}
+	
 		
 }
 	
