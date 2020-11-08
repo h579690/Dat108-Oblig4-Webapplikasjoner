@@ -39,7 +39,7 @@ public class PaameldingsServlet extends HttpServlet {
 		String mobil = val.escapeHtml(request.getParameter("mobil"));
 		String passord = val.escapeHtml(request.getParameter("passord"));
 		String passordRepetert = val.escapeHtml(request.getParameter("passordRepetert"));
-		String kjonn = val.escapeHtml(request.getParameter("kjonn"));
+		String kjonn = request.getParameter("kjonn");
 
 		boolean paameldt = deltagerEAO.finnEnDeltager(mobil) != null;
 		

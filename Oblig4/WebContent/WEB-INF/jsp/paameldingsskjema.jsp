@@ -17,26 +17,26 @@
       <form method="post" action="paamelding">
         <fieldset>
           <label for="fornavn">Fornavn:</label> <input type="text" name="fornavn" id="fornavn" value="${deltagerForm.fornavn}" />
-          <span class="melding">${deltagerForm.fornavnMelding}</span>
+          <span class="melding"><font color="red">${deltagerForm.fornavnMelding}</font></span>
 
           <label for="etternavn">Etternavn:</label> <input type="text" name="etternavn" id="etternavn" value="${deltagerForm.etternavn}" />
-          <span class="melding">${deltagerForm.etternavnMelding}</span>
+          <span class="melding"><font color="red">${deltagerForm.etternavnMelding}</font></span>
 
           <label for="mobil">Mobil (8 siffer):</label> <input type="text" name="mobil" id="mobil" value="${deltagerForm.mobil}" />
-          <span class="melding">${deltagerForm.mobilMelding}</span>
+          <span class="melding"><font color="red">${deltagerForm.mobilMelding}</font></span>
 
           <label for="passord">Passord:</label> <input type="password" name="passord" id="passord" />
-          <span class="melding">${deltagerForm.passordMelding}</span>
+          <span class="melding"><font color="red">${deltagerForm.passordMelding}</font></span>
 
           <label for="passordRepetert">Passord repetert:</label> <input type="password" name="passordRepetert" id="passordRepetert" />
-          <span class="melding">${deltagerForm.passordRepetertMelding}</span>
+          <span class="melding"><font color="red">${deltagerForm.passordRepetertMelding}</font></span>
 
           <span class="columnfirst">Kjønn:</span>
           <span data-kjonn>
             <label><input type="radio" name="kjonn" value="mann" ${deltagerForm.kjonn eq "mann" ? "checked=\"checked\"" : ""} /> mann</label>
             <label><input type="radio" name="kjonn" value="kvinne" ${deltagerForm.kjonn eq "kvinne" ? "checked=\"checked\"" : ""} />kvinne</label>
           </span>
-          <span class="melding">${deltagerForm.kjonnMelding}</span>
+          <span class="melding"><font color="red">${deltagerForm.kjonnMelding}</font></span>
 
           <button type="submit">Meld meg på</button>
         </fieldset>
