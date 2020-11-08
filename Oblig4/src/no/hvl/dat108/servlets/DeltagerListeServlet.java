@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,25 +23,34 @@ import no.hvl.dat108.model.DeltagerEAO;
 public class DeltagerListeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	private List<Deltager> liste;
+	//private List<Deltager> liste;
+	
+	@EJB
 	private DeltagerEAO deltagerEAO = new DeltagerEAO();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(InnloggingUtil.isInnlogget(request)) {
 			//TODO hente alle deltagere fra database
-//			liste = deltagerEAO.deltagerListe();
-//			System.out.println(liste);
+			//liste = deltagerEAO.deltagerListe();
+			//System.out.println(liste);
+			
+			
+			response.setContentType("text/plain");
 			
 			//TODO sortere listen
-			
-//			liste.stream()
-//				      .sorted(Comparator.comparing(Deltager::getFornavn).thenComparing(Deltager::getEtternavn));
+			List<Deltager> liste = deltagerEAO.deltagerListe().stream()
+				      .sorted(Comparator.comparing(Deltager::getFornavn).thenComparing(Deltager::getEtternavn))
+				      .collect(Collectors.toList());
 				      
 			
 			//TODO finne innlogget bruker  vet ikke om det trengs??
-//			request.getSession().setAttribute("deltagerliste", liste);
+			
+			
+			request.getSession().setAttribute("deltagerliste", liste);
+			
 			request.getRequestDispatcher("WEB-INF/jsp/deltagerliste.jsp").forward(request,response);
+			
 			
 		} else {
 			String feilmelding = "Det er kun registrerte deltagere som får se deltagerlisten. "
