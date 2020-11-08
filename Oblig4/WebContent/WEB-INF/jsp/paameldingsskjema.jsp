@@ -31,6 +31,13 @@
           <label for="passordRepetert">Passord repetert:</label> <input type="password" name="passordRepetert" id="passordRepetert" />
           <span class="melding"><font color="red">${deltagerForm.passordRepetertMelding}</font></span>
 
+<div id="infoPassord">
+				<p>Info om passordstyrke:</p>
+				<p> <font color="red">Rødt</font> - Under 8 tegn, Ugyldig passord</p>
+				<p> <font color="yellow">Gult</font> - Mellom 8-12 tegn, Gyldig, men middels sterkt</p>
+				<p> <font color="green">Grønt</font> - Over 12 tegn, Gyldig og sterkt </p>
+</div>
+
           <span class="columnfirst">Kjønn:</span>
           <span data-kjonn>
             <label><input type="radio" name="kjonn" value="mann" ${deltagerForm.kjonn eq "mann" ? "checked=\"checked\"" : ""} /> mann</label>
