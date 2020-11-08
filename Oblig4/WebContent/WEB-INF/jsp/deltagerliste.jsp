@@ -1,4 +1,6 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
 <html>
@@ -17,26 +19,26 @@
 			<th align="left">Navn</th>
 			<th align="left">Mobil</th>
 		</tr>
-		<!-- <c::forEach items="${deltagerliste}" var="d">
-			<c::choose>
-				<c::when test="${d.mobil eq innlogger.mobil}">
+		 <c:forEach items="${deltagerliste}" var="d">
+			<c:choose>
+				<c:when test="${d.mobil eq innlogger.mobil}">
 					<tr bgcolor="#aaffaa">
 						<td align="center">${d.tegn}</td>
 						<td>${d.fornavn} ${d.etternavn}</td>
 						<td>${d.mobil}</td>
 					</tr>
-				</c::when>
-				<c::otherwise>
+				</c:when>
+				<c:otherwise>
 					<tr bgcolor="#ffffff">
 						<td align="center">${d.tegn}</td>
 						<td>${d.fornavn} ${d.etternavn}</td>
 						<td>${d.mobil}</td>
 					</tr>
-				</c::otherwise>
-			</c::choose>
-		</c::forEach> -->
+				</c:otherwise>
+			</c:choose>
+		</c:forEach> 
 		
-		<tr bgcolor="#aaffaa">
+		 <!--<tr bgcolor="#aaffaa">
 			<td align="center">&#9792;</td>
 			<td>Anne Annesen</td>
 			<td>445 54 455</td>
@@ -50,7 +52,7 @@
 			<td align="center">&#9794;</td>
 			<td>Per Viskeler</td>
 			<td>112 23 344</td>
-		</tr>  
+		</tr>  -->
 	</table>
 	<p>
 		<a href="loggut">Ferdig</a>
