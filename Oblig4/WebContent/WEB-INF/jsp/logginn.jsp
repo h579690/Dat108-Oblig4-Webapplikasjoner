@@ -15,7 +15,7 @@
 	<p>
 		${melding}
 	</p>
-	<form method="post" class="pure-form pure-form-aligned">
+	<form method="post" action="logginn" class="pure-form pure-form-aligned">
 		<fieldset>
 			<div class="pure-control-group">
 				<label for="mobil">Mobil:</label> <input type="text" name="mobil" />

@@ -14,7 +14,7 @@
     <h2>Påmelding</h2>
 
     <div id="root">
-      <form method="post">
+      <form method="post" action="paamelding">
         <fieldset>
           <label for="fornavn">Fornavn:</label> <input type="text" name="fornavn" id="fornavn" value="${deltagerForm.fornavn}" />
           <span class="melding">${deltagerForm.fornavnMelding}</span>
