@@ -24,7 +24,7 @@ public class Validation {
 	}
  
 	public boolean erGyldigPassord(String passord) {
-		if(passord.length() > 3 
+		if(passord.length() > 7 
 				&& !passord.isBlank()) {
 			return true;
 		}
