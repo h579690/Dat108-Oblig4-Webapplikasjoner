@@ -1,6 +1,3 @@
-/**
- * 
- */
 
 "use strict";
 
@@ -10,36 +7,36 @@ class Validator{
 	constructor (root = null){
 		this.root = root;
 		this.run = this.run.bind(this);
-		this.color = this.run.bind(this);
-		this.iFornavn = iFornavn;
-		this.iEtternavn = iEtternavn;
-		this.iMobil = iMobil;
-		this.iPassord = iPassord;
-		this.iPassordRepetert = iPassordRepetert;
+		this.color;
+		this.iFornavn;
+		this.iEtternavn;
+		this.iMobil;
+		this.iPassord;
+		this.iPassordRepetert;
 	
 	}
 	
 	run(){
 		  
-   
+   	console.log("Her")
 		
 		const inputRef = document.getElementById(this.root).getElementsByTagName("input");
 	
 		this.iFornavn = inputRef[0];
 		console.log(this.iFornavn);
-		this.iFornavn.addEventListener("input", this.validerFornavn);
+		this.iFornavn.addEventListener("change", this.validerFornavn);
 		
 		this.iEtternavn = inputRef[1];
-		this.iEtternavn.addEventListener("input", this.validerEtternavn);
+		this.iEtternavn.addEventListener("change", this.validerEtternavn);
 		
 		this.iMobil = inputRef[2];
-		this.iMobil.addEventListener("input", this.validerMobil);
+		this.iMobil.addEventListener("change", this.validerMobil);
 		
 		this.iPassord = inputRef[3];
-		this.iPassord.addEventListener("input", this.validerPassord);
+		this.iPassord.addEventListener("change", this.validerPassord);
 		
 		this.iPassordRepetert = inputRef[4];
-		this.iPassordRepetert.addEventListener("input", this.validerPassorRepetert);
+		this.iPassordRepetert.addEventListener("change", this.validerPassorRepetert);
 			
 		}
 
@@ -97,14 +94,7 @@ class Validator{
    		 }
 	
 	}
-	
-	
-
-		
 		
 }
-	
-	
-	
 	
 	

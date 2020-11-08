@@ -30,7 +30,7 @@ public class ValidatorTest {
 		assertTrue(validation.erGyldigMobil("12345678"));
 		assertFalse(validation.erGyldigMobil("1234ab78"));
 		assertFalse(validation.erGyldigMobil("1234567"));
-		assertFalse(validation.erGyldigMobil("123456789"));
+		assertFalse(validation.erGyldigMobil("123456789")); 
 	}
 	
 	
