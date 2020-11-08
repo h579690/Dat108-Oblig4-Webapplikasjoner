@@ -31,18 +31,14 @@ public class PaameldingsServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String fnavn = request.getParameter("fornavn");
-		String enavn = request.getParameter("etternavn");
-		String mobil = request.getParameter("mobil");
-		String pass = request.getParameter("passord");
-		String passRep = request.getParameter("passordRepetert");
-		String kjonn = request.getParameter("kjonn");
+		String fnavn = val.escapeHtml(request.getParameter("fornavn"));
+		String enavn = val.escapeHtml(request.getParameter("etternavn"));
+		String mobil = val.escapeHtml(request.getParameter("mobil"));
+		String pass = val.escapeHtml(request.getParameter("passord"));
+		String passRep = val.escapeHtml(request.getParameter("passordRepetert"));
+		String kjonn = val.escapeHtml(request.getParameter("kjonn"));
 
-		boolean paameldt = false;
-		if(deltagerEAO.finnEnDeltager(mobil) != null) {
-			paameldt = true;
-			// Skal komme databasekode her
-		}
+		boolean paameldt = deltagerEAO.finnEnDeltager(mobil) == null;
 		
 		boolean gFnavn = false; 
 		boolean	gEnavn = false;
@@ -54,6 +50,7 @@ public class PaameldingsServlet extends HttpServlet {
 		if (!val.erGyldigNavn(fnavn)) {
 			deltagerForm.setFornavnMelding("Ugyldig fornavn");
 		} else {
+			
 			deltagerForm.setFornavn(fnavn);
 			gFnavn = true;
 		}
