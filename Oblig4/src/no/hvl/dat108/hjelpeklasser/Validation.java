@@ -39,12 +39,10 @@ public class Validation {
 	}
 	
 	public boolean erGyldigKjonn(String kjonn) {
-		if(kjonn.equals("mann")) {
-			return true ;
-		} 
-		if(kjonn.equals("kvinne")) {
+		if(kjonn.equals("mann") || kjonn.equals("kvinne")) {
 			return true;
-		}
+		}	
+		
 		return false;
 	}
 	

@@ -14,7 +14,6 @@ public class Deltager {
 	private String fornavn;
 	private String etternavn;
 	private String passordhash;
-	private String passordsalt;
 	private char kjonn;
 	
 	
@@ -61,7 +60,7 @@ public class Deltager {
 	@Override
 	public String toString() {
 		return "Deltager [mobil=" + mobil + ", fornavn=" + fornavn + ", etternavn=" + etternavn + ", passordhash="
-				+ passordhash + ", passordsalt=" + passordsalt + ", kjonn=" + kjonn + "]";
+				+ passordhash +  ", kjonn=" + kjonn + "]";
 	}
 	
 	

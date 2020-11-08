@@ -41,7 +41,7 @@ public class PaameldingsServlet extends HttpServlet {
 		String passordRepetert = val.escapeHtml(request.getParameter("passordRepetert"));
 		String kjonn = val.escapeHtml(request.getParameter("kjonn"));
 
-		boolean paameldt = deltagerEAO.finnEnDeltager(mobil) == null;
+		boolean paameldt = deltagerEAO.finnEnDeltager(mobil) != null;
 		
 		boolean gFnavn = false; 
 		boolean	gEnavn = false;
@@ -71,20 +71,18 @@ public class PaameldingsServlet extends HttpServlet {
 			gMobil = true;
 		}
 
-//		if (!val.erGyldigPassord(passord)) {
-//			deltagerForm.setPassordMelding("Ugyldig Passord");
-//		} else {
-//			gPass = true;
-//		}
-//
-//		if (!val.erGyldigPassordRepetert(passord, passordRepetert)) {
-//			deltagerForm.setPassordRepetertMelding("Ikke likt passord");
-//		} else {
-//			gPassRep = true;
-//		}
+		if (!val.erGyldigPassord(passord)) {
+			deltagerForm.setPassordMelding("Ugyldig Passord");
+		} else {
+			gPass = true;
+		}
+
+		if (!val.erGyldigPassordRepetert(passord, passordRepetert)) {
+		} else {
+			gPassRep = true;
+		}
 
 		if (!val.erGyldigKjonn(kjonn)) {
-			deltagerForm.setKjonnMelding("Ugyldig kjonn");
 		} else {
 			deltagerForm.setKjonn(kjonn);
 			gKjonn = true;
@@ -110,6 +108,8 @@ public class PaameldingsServlet extends HttpServlet {
 			request.getSession().setAttribute("etternavn", etternavn);
 			request.getSession().setAttribute("mobil", mobil);
 			request.getSession().setAttribute("kjonn", kjonn);
+			
+			request.getSession().setAttribute("innlogget", deltager);
 
 			//Redirect til /bekreftelse
 			request.getRequestDispatcher("WEB-INF/jsp/paameldingsbekreftelse.jsp").forward(request, response);
