@@ -35,7 +35,6 @@ public class DeltagerListeServlet extends HttpServlet {
 			//liste = deltagerEAO.deltagerListe();
 			//System.out.println(liste);
 			
-			
 			response.setContentType("text/plain");
 			
 			//TODO sortere listen
