@@ -2,6 +2,7 @@ package no.hvl.dat108.servlets;
 
 import java.io.IOException;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +18,8 @@ public class PaameldingsServlet extends HttpServlet {
 
 	private Validation val = new Validation();
 	private DeltagerForm deltagerForm = new DeltagerForm();
+	
+	@EJB
 	private DeltagerEAO deltagerEAO = new DeltagerEAO();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -35,7 +38,11 @@ public class PaameldingsServlet extends HttpServlet {
 		String passRep = request.getParameter("passordRepetert");
 		String kjonn = request.getParameter("kjonn");
 
-		boolean paameldt = deltagerEAO.finnEnDeltager(mobil) != null; // Skal komme databasekode her
+		boolean paameldt = false;
+		if(deltagerEAO.finnEnDeltager(mobil) != null) {
+			paameldt = true;
+			// Skal komme databasekode her
+		}
 		
 		boolean gFnavn = false; 
 		boolean	gEnavn = false;
