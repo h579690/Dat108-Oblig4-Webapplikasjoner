@@ -78,11 +78,13 @@ public class PaameldingsServlet extends HttpServlet {
 		}
 
 		if (!val.erGyldigPassordRepetert(passord, passordRepetert)) {
+			deltagerForm.setPassordRepetertMelding("Ikke like passord");
 		} else {
 			gPassRep = true;
 		}
 
 		if (!val.erGyldigKjonn(kjonn)) {
+			deltagerForm.setKjonn("ugyldig kjonn");
 		} else {
 			deltagerForm.setKjonn(kjonn);
 			gKjonn = true;
