@@ -1,7 +1,9 @@
 package no.hvl.dat108.servlets;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import no.hvl.dat108.hjelpeklasser.InnloggingUtil;
 import no.hvl.dat108.model.Deltager;
+import no.hvl.dat108.model.DeltagerEAO;
 
 /**
  * Servlet implementation class DeltagerListeServlet
@@ -19,17 +22,26 @@ import no.hvl.dat108.model.Deltager;
 public class DeltagerListeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	List<Deltager> liste;
+	private List<Deltager> liste;
+	private DeltagerEAO deltagerEAO = new DeltagerEAO();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(InnloggingUtil.isInnlogget(request)) {
 			//TODO hente alle deltagere fra database
-			//liste = deltakerEAO.hentAlle();
+//			liste = deltagerEAO.deltagerListe();
+//			System.out.println(liste);
+			
 			//TODO sortere listen
-			//TODO finne innlogget bruker
-			//request.getSession().setAttribute("deltakerliste", liste);
+			
+//			liste.stream()
+//				      .sorted(Comparator.comparing(Deltager::getFornavn).thenComparing(Deltager::getEtternavn));
+				      
+			
+			//TODO finne innlogget bruker  vet ikke om det trengs??
+//			request.getSession().setAttribute("deltagerliste", liste);
 			request.getRequestDispatcher("WEB-INF/jsp/deltagerliste.jsp").forward(request,response);
+			
 		} else {
 			String feilmelding = "Det er kun registrerte deltagere som får se deltagerlisten. "
 					+ "Logg inn ved å gi mobilnummer og passord";
