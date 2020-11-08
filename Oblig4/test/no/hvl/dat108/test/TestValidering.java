@@ -1,5 +1,6 @@
 package no.hvl.dat108;
 
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
